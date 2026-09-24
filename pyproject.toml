@@ -1,0 +1,45 @@
+[project]
+name = "micro-agent-k"
+version = "0.1.0"
+description = "A small agent for tinkering, built from the ground up (LangGraph + Claude)."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "kenkyl", email = "kylekennedyw@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "anthropic>=1.8.0",
+    "langgraph>=1.2.12",
+    "pydantic-settings>=2.15.0",
+    "redis>=8.1.0",
+]
+
+[project.scripts]
+micro-agent = "micro_agent.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.6,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "micro_agent"
+
+[dependency-groups]
+dev = [
+    "fakeredis>=2.38.0",
+    "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+    "ruff>=0.16.8",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: calls the real Anthropic API (deselect with -m 'not live')"]
