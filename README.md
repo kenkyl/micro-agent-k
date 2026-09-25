@@ -47,7 +47,7 @@ Settings are read from environment variables or from `.env`:
 | Variable | Default | Purpose |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | — | Claude API key |
-| `MODEL` | `claude-opus-5` | Claude model ID |
+| `MODEL` | `claude-sonnet-5` | Claude model ID |
 | `REDIS_URL` | `redis://localhost:6379/0` | Redis instance the tools inspect |
 | `MAX_STEPS` | `10` | Maximum model calls per run |
 
@@ -62,7 +62,7 @@ uv run pytest -m "not live"
 ## Roadmap
 
 - [x] Project scaffold, CI, pre-commit
-- [ ] Minimal framework-free reference loop (`scripts/00_raw_loop.py`)
+- [x] Minimal framework-free reference loop (`scripts/00_raw_loop.py`)
 - [ ] LangGraph agent: state, model node, tool node, router, CLI
 - [ ] Read-only Redis tools (`redis_info`, `redis_scan`, `redis_get`)
 - [ ] Docker image and Compose setup
